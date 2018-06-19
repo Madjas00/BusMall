@@ -1,5 +1,11 @@
 'use strict';
 
+function displayImages() {
+
+}
+
+window.addEventListener('load', displayImages);
+
 //Setting up Object Constructor Function
 function Item (name,image) {
     this.name = name;
