@@ -3,25 +3,34 @@
 var nextImage = 0;
 //Function for Displaying Images
 function displayImages() {
-    var image1 = Item.all [nextImage++];
+    var image1 = Item.all [randomIntFromInterval(0,8)];
     var img1 = document.getElementById('item-1');
     img1.src = image1.src;
 
-    var image2 = Item.all [nextImage++];
+    var image2 = Item.all [randomIntFromInterval(0,8)];
     var img2 = document.getElementById('item-2');
     img2.src = image2.src;
 
-    var image3 = Item.all [nextImage++];
+    var image3 = Item.all [randomIntFromInterval(0,8)];
     var img3 = document.getElementById('item-3');
     img3.src = image3.src;
     
 
 }
 
+//Function for choosing random number
+function randomIntFromInterval(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
 
+//click event for changing Images
 var itemImages = document.querySelectorAll('#vote img');
 
+
+
 for(var i=0; i < itemImages.length; i++  ) {
+    
     itemImages[i].addEventListener('click',function(event){
         console.log('click' ,event.target);
 
