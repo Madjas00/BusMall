@@ -6,6 +6,7 @@ var voteCount = 0;
 function displayImages() {
     
     if (voteCount === 25){
+        console.log('display results');
         return;
 
     }
@@ -66,6 +67,13 @@ new Item('Modern Chair', 'img/chair.jpg');
 new Item('Toilet Tablet', 'img/bathroom.jpg');
 new Item('Banana Peeler', 'img/banana.jpg');
 new Item('Boots', 'img/boots.jpg');
+new Item('All-in-one Breakfast Maker', 'img/breakfast.jpg');
+new Item('Tauntaun Sleeping Bag', 'img/tauntaun.jpg');
+new Item('Unicorn Meat', 'img/unicorn.jpg');
+new Item('Tentacle USB', 'img/usb.gif');
+new Item('Baby Sweeper', 'img/sweep.png');
+new Item('Self Watering Can', 'img/water-can.jpg');
+
 
 window.addEventListener('load', displayImages);
 console.log(Item.all);
