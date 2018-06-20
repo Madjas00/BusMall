@@ -1,8 +1,14 @@
 'use strict';
 
 var nextImage = 0;
+var voteCount = 0;
 //Function for Displaying Images
 function displayImages() {
+    
+    if (voteCount === 25){
+        return;
+
+    }
     var image1 = Item.all [randomIntFromInterval(0,8)];
     var img1 = document.getElementById('item-1');
     img1.src = image1.src;
@@ -33,6 +39,8 @@ for(var i=0; i < itemImages.length; i++  ) {
     
     itemImages[i].addEventListener('click',function(event){
         console.log('click' ,event.target);
+        voteCount++;
+        console.log(voteCount);
 
         displayImages();
     });
