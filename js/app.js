@@ -128,13 +128,13 @@ function showChart() {
             labels: labels,
             datasets: [{
                 label: 'Vote Count',
-                backgroundColor: 'blue',
+                backgroundColor: '#F694C1',
                 data: countVotes
 
             },
             {
                label: 'Show Count',
-               backgroundColor: 'red',
+               backgroundColor: '#A9DEF9',
                data: showCounts,
             }
         ]
