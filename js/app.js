@@ -7,18 +7,19 @@ function displayImages() {
     
     if (voteCount === 25){
         console.log('display results');
+        showResults();
         return;
 
     }
-    var image1 = Item.all [randomIntFromInterval(0,8)];
+    var image1 = Item.all [randomIntFromInterval(0,4)];
     var img1 = document.getElementById('item-1');
     img1.src = image1.src;
 
-    var image2 = Item.all [randomIntFromInterval(0,8)];
+    var image2 = Item.all [randomIntFromInterval(5,9)];
     var img2 = document.getElementById('item-2');
     img2.src = image2.src;
 
-    var image3 = Item.all [randomIntFromInterval(0,8)];
+    var image3 = Item.all [randomIntFromInterval(10,14)];
     var img3 = document.getElementById('item-3');
     img3.src = image3.src;
     
@@ -48,9 +49,11 @@ for(var i=0; i < itemImages.length; i++  ) {
 }
 
 //Setting up Object Constructor Function
-function Item (name,src) {
+function Item (name,src,votes,shows) {
     this.name = name;
     this.src = src;
+    this.votes = votes || 0;
+    this.shows = shows || 0;
 
     Item.all.push(this);
 
@@ -58,24 +61,35 @@ function Item (name,src) {
 
 Item.all = [];
 //Objects Created
-new Item('R2-D2 Bag', 'img/bag.jpg');
-new Item('Dog Duck', 'img/dog-duck.jpg');
-new Item('Meatball Bubble Gum', 'img/bubblegum.jpg');
-new Item('Cthulhu', 'img/cthulhu.jpg');
-new Item('Dragon Meat', 'img/dragon.jpg');
-new Item('Modern Chair', 'img/chair.jpg');
-new Item('Toilet Tablet', 'img/bathroom.jpg');
-new Item('Banana Peeler', 'img/banana.jpg');
-new Item('Boots', 'img/boots.jpg');
-new Item('All-in-one Breakfast Maker', 'img/breakfast.jpg');
-new Item('Tauntaun Sleeping Bag', 'img/tauntaun.jpg');
-new Item('Unicorn Meat', 'img/unicorn.jpg');
-new Item('Tentacle USB', 'img/usb.gif');
-new Item('Baby Sweeper', 'img/sweep.png');
-new Item('Self Watering Can', 'img/water-can.jpg');
+new Item('R2-D2 Bag', 'img/bag.jpg', 5, 9);
+new Item('Dog Duck', 'img/dog-duck.jpg', 3, 7);
+new Item('Meatball Bubble Gum', 'img/bubblegum.jpg', 5, 10);
+new Item('Cthulhu', 'img/cthulhu.jpg', 6, 11);
+new Item('Dragon Meat', 'img/dragon.jpg', 4, 7);
+new Item('Modern Chair', 'img/chair.jpg', 8, 12);
+new Item('Toilet Tablet', 'img/bathroom.jpg', 2, 6);
+new Item('Banana Peeler', 'img/banana.jpg', 6, 13);
+new Item('Boots', 'img/boots.jpg', 9, 16);
+new Item('All-in-one Breakfast Maker', 'img/breakfast.jpg', 5, 9);
+new Item('Tauntaun Sleeping Bag', 'img/tauntaun.jpg', 8, 11);
+new Item('Unicorn Meat', 'img/unicorn.jpg', 6, 8);
+new Item('Tentacle USB', 'img/usb.gif', 9, 13);
+new Item('Baby Sweeper', 'img/sweep.png', 10, 18);
+new Item('Self Watering Can', 'img/water-can.jpg', 4, 11);
 
 
 window.addEventListener('load', displayImages);
 console.log(Item.all);
+
+function showResults() {
+    var ul = document.getElementById('results');
+    for(var i = 0; i < Item.all.length; i++) {
+        var thisItem = Item.all[i];
+        var li = document.createElement('li');
+        li.textContent = thisItem.name + ' got ' +thisItem.voteCount + ' votes.';
+        ul.appendChild(li);
+
+    }
+}
 
 
