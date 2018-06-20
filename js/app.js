@@ -1,3 +1,4 @@
+/*globals Chart */
 'use strict';
 
 var nextImage = 0;
@@ -9,6 +10,7 @@ function displayImages() {
     if (voteCount === 5){
         console.log('display results');
         showResults();
+        
         return;
 
     }
@@ -97,6 +99,27 @@ function showResults() {
         ul.appendChild(li);
 
     }
+    showChart();
 }
 
+//Show Chart
 
+
+function showChart() {
+    var canvas = document.getElementById('resultsCanvas');
+    canvas.style.display = 'block';
+
+    var ctx = canvas.getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: [],
+        options: {
+           responsive: true,
+            title: {
+                display: true,
+                text: 'Voting Results'
+
+            }
+        }
+    });
+}
