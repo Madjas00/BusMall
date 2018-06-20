@@ -2,10 +2,11 @@
 
 var nextImage = 0;
 var voteCount = 0;
+var showCount = 0;
 //Function for Displaying Images
 function displayImages() {
     
-    if (voteCount === 25){
+    if (voteCount === 5){
         console.log('display results');
         showResults();
         return;
@@ -52,8 +53,8 @@ for(var i=0; i < itemImages.length; i++  ) {
 function Item (name,src,votes,shows) {
     this.name = name;
     this.src = src;
-    this.votes = votes || 0;
-    this.shows = shows || 0;
+    this.voteCount = votes || 0;
+    this.showCount = shows || 0;
 
     Item.all.push(this);
 
@@ -76,6 +77,11 @@ new Item('Unicorn Meat', 'img/unicorn.jpg', 6, 8);
 new Item('Tentacle USB', 'img/usb.gif', 9, 13);
 new Item('Baby Sweeper', 'img/sweep.png', 10, 18);
 new Item('Self Watering Can', 'img/water-can.jpg', 4, 11);
+
+for (var i = 0; i < Item.all.length; i++) {
+    Item.all[i].voteCount = Math.floor(Math.random() * 50);
+    Item.all[i].showCount = Math.floor(Math.random() * 100);
+}
 
 
 window.addEventListener('load', displayImages);
