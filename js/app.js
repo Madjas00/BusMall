@@ -78,6 +78,7 @@ new Item('Tentacle USB', 'img/usb.gif', 9, 13);
 new Item('Baby Sweeper', 'img/sweep.png', 10, 18);
 new Item('Self Watering Can', 'img/water-can.jpg', 4, 11);
 
+//Randomize Votes and Show Counts
 for (var i = 0; i < Item.all.length; i++) {
     Item.all[i].voteCount = Math.floor(Math.random() * 50);
     Item.all[i].showCount = Math.floor(Math.random() * 100);
