@@ -64,13 +64,13 @@ function Item (name,src,votes,shows) {
 
 Item.all = [];
 //Objects Created
-new Item('R2-D2 Bag', 'img/bag.jpg', 5, 9);
-new Item('Dog Duck', 'img/dog-duck.jpg', 3, 7);
+new Item('R2-D2 Bag', 'img/bag.jpg', 5, 13);
+new Item('Dog Duck', 'img/dog-duck.jpg', 4, 9);
 new Item('Meatball Bubble Gum', 'img/bubblegum.jpg', 5, 10);
-new Item('Cthulhu', 'img/cthulhu.jpg', 6, 11);
-new Item('Dragon Meat', 'img/dragon.jpg', 4, 7);
-new Item('Modern Chair', 'img/chair.jpg', 8, 12);
-new Item('Toilet Tablet', 'img/bathroom.jpg', 2, 6);
+new Item('Cthulhu', 'img/cthulhu.jpg', 2, 11);
+new Item('Dragon Meat', 'img/dragon.jpg', 2, 7);
+new Item('Modern Chair', 'img/chair.jpg', 6, 12);
+new Item('Toilet Tablet', 'img/bathroom.jpg', 2, 9);
 new Item('Banana Peeler', 'img/banana.jpg', 6, 13);
 new Item('Boots', 'img/boots.jpg', 9, 16);
 new Item('All-in-one Breakfast Maker', 'img/breakfast.jpg', 5, 9);
@@ -109,12 +109,46 @@ function showChart() {
     var canvas = document.getElementById('resultsCanvas');
     canvas.style.display = 'block';
 
+    var labels = [];
+    var countVotes = [];
+    var showCounts = [];
+    for (var i = 0; i < Item.all.length; i++) {
+       labels[i] = Item.all[i].name;
+       countVotes[i] = Item.all[i].voteCount;
+       showCounts[i] = Item.all[i].showCount;
+       }
+
+    
+
+
     var ctx = canvas.getContext('2d');
     var chart = new Chart(ctx, {
         type: 'bar',
-        data: [],
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Vote Count',
+                backgroundColor: 'blue',
+                data: countVotes
+
+            },
+            {
+               label: 'Show Count',
+               backgroundColor: 'red',
+               data: showCounts,
+            }
+        ]
+        },
         options: {
            responsive: true,
+           scales: {
+               yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                  } 
+               }]
+
+           },
             title: {
                 display: true,
                 text: 'Voting Results'
