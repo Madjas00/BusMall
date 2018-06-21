@@ -1,6 +1,20 @@
 /*globals Chart */
 'use strict';
+window.addEventListener('load', function onLoad() {
+    initializeItems();
+    displayImages();
+});
 
+//Local Storage
+
+function saveAll() {
+    localStorage['items'] = Item.all;
+}
+
+
+function getFromStorage() {
+    return localStorage['items'];
+}
 var nextImage = 0;
 var voteCount = 0;
 var showCount = 0;
@@ -64,6 +78,7 @@ function Item (name,src,votes,shows) {
 
 Item.all = [];
 //Objects Created
+function initializeItems(){
 new Item('R2-D2 Bag', 'img/bag.jpg', 5, 13);
 new Item('Dog Duck', 'img/dog-duck.jpg', 4, 9);
 new Item('Meatball Bubble Gum', 'img/bubblegum.jpg', 5, 10);
@@ -79,6 +94,9 @@ new Item('Unicorn Meat', 'img/unicorn.jpg', 6, 8);
 new Item('Tentacle USB', 'img/usb.gif', 9, 13);
 new Item('Baby Sweeper', 'img/sweep.png', 10, 18);
 new Item('Self Watering Can', 'img/water-can.jpg', 4, 11);
+}
+
+
 
 //Randomize Votes and Show Counts. Removed because vote count was somtimes higher that show count.
 // for (var i = 0; i < Item.all.length; i++) {
@@ -87,7 +105,7 @@ new Item('Self Watering Can', 'img/water-can.jpg', 4, 11);
 // }
 
 
-window.addEventListener('load', displayImages);
+
 console.log(Item.all);
 
 function showResults() {
