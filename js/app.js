@@ -55,18 +55,31 @@ function displayImages() {
     image1.showCount++;
     var img1 = document.getElementById('item-1');
     img1.src = image1.src;
+    img1.currentItem = image1;
 
     var image2 = Item.all [randomIntFromInterval(5,9)];
     image2.showCount++;
     var img2 = document.getElementById('item-2');
     img2.src = image2.src;
+    img2.currentItem = image2;
 
     var image3 = Item.all [randomIntFromInterval(10,14)];
     image3.showCount++;
     var img3 = document.getElementById('item-3');
     img3.src = image3.src;
+    img3.currentItem = image3;
     
 
+}
+
+var productImages = document.querySelectorAll('img');
+for(var i = 0; i <productImages.length; i++) {
+    productImages[i].addEventListener('click', function (event) {
+        voteCount++;
+
+        event.target.currentItem.voteCount ++;
+        displayImages();
+    });
 }
 
 //Function for choosing random number
@@ -85,7 +98,6 @@ for(var i=0; i < itemImages.length; i++  ) {
     itemImages[i].addEventListener('click',function(event){
         Item.voteCount++;
         console.log('click' ,event.target);
-        voteCount++;
         saveAll();
         console.log(voteCount);
 
@@ -177,7 +189,7 @@ function showChart() {
             datasets: [{
                 label: 'Vote Count',
                 backgroundColor: '#F694C1',
-                data: countVotes
+                data: countVotes,
 
             },
             {
@@ -205,3 +217,4 @@ function showChart() {
         }
     });
 }
+
