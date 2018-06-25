@@ -7,7 +7,7 @@ window.addEventListener('load', function onLoad() {
         initializeItems();
     }
 
-    initializeItems();
+    
     displayImages();
 });
 
@@ -44,7 +44,7 @@ var showCount = 0;
 //Function for Displaying Images
 function displayImages() {
     
-    if (voteCount === 5){
+    if (voteCount === 25){
         console.log('display results');
         showResults();
         
@@ -72,7 +72,7 @@ function displayImages() {
 
 }
 
-var productImages = document.querySelectorAll('img');
+var productImages = document.querySelectorAll('#vote img');
 for(var i = 0; i <productImages.length; i++) {
     productImages[i].addEventListener('click', function (event) {
         voteCount++;
@@ -89,21 +89,7 @@ function randomIntFromInterval(min,max)
 }
 
 //click event for changing Images
-var itemImages = document.querySelectorAll('#vote img');
 
-
-
-for(var i=0; i < itemImages.length; i++  ) {
-    
-    itemImages[i].addEventListener('click',function(event){
-        Item.voteCount++;
-        console.log('click' ,event.target);
-        saveAll();
-        console.log(voteCount);
-
-        displayImages();
-    });
-}
 
 //Setting up Object Constructor Function
 function Item (name,src,votes,shows) {
@@ -152,6 +138,7 @@ console.log(Item.all);
 
 function showResults() {
     var ul = document.getElementById('results');
+    ul.innerHTML = '';
     for(var i = 0; i < Item.all.length; i++) {
         var thisItem = Item.all[i];
         var li = document.createElement('li');
