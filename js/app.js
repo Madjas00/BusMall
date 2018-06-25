@@ -1,15 +1,6 @@
 /*globals Chart */
 'use strict';
-window.addEventListener('load', function onLoad() {
-    getFromStorage();
 
-    if(Item.all.length === 0) {
-        initializeItems();
-    }
-
-    
-    displayImages();
-});
 
 //Local Storage
 
@@ -40,7 +31,7 @@ function getFromStorage() {
 }
 var nextImage = 0;
 var voteCount = 0;
-var showCount = 0;
+
 //Function for Displaying Images
 function displayImages() {
     
@@ -71,6 +62,8 @@ function displayImages() {
     
 
 }
+
+
 
 var productImages = document.querySelectorAll('#vote img');
 for(var i = 0; i <productImages.length; i++) {
@@ -132,13 +125,21 @@ saveAll();
 //     Item.all[i].showCount = Math.floor(Math.random() * 100);
 // }
 
+window.addEventListener('load', function onLoad() {
+    getFromStorage();
 
+    if(Item.all.length === 0) {
+        initializeItems();
+    }
+
+    
+    displayImages();
+});
 
 console.log(Item.all);
 
 function showResults() {
     var ul = document.getElementById('results');
-    ul.innerHTML = '';
     for(var i = 0; i < Item.all.length; i++) {
         var thisItem = Item.all[i];
         var li = document.createElement('li');
@@ -181,7 +182,7 @@ function showChart() {
             },
             {
                label: 'Show Count',
-               backgroundColor: '#A9DEF9',
+               backgroundColor: '#de5eff',
                data: showCounts,
             }
         ]

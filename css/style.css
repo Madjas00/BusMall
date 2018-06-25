@@ -2,6 +2,11 @@
     display: none;
 }
 
+body{
+    background-color: rgb(198, 229, 255);
+    margin: 0;
+}
+
 header h1 {
     text-align: center;
     font-size: 50px;
@@ -9,18 +14,17 @@ header h1 {
     letter-spacing: 5px;
 }
 
-body {
-    margin: 0;
-    background-color: white;
-}
+
 
 li img {
     width: 30%;
-    box-sizing: border-box;
     float: left;
+    padding-right: 1px;
+    border: 1px solid black;
 }
 
 h3{
+    font-size: 25px;
 
 }
 
@@ -28,3 +32,21 @@ ol {
     list-style: none;
 }
 
+section{
+    border: 5px dashed black;
+}
+
+section h2{
+    text-align: center;
+    color: rgb(243, 70, 70);
+}
+
+p{
+    text-align: center;
+}
+
+header{
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
